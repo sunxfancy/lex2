@@ -1,0 +1,8 @@
+*.*~
+*.bc
+.fuse*
+*.sublime-*
+.clang_complete
+bin/
+build/
+build-doc/
