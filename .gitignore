@@ -6,3 +6,5 @@
 bin/
 build/
 build-doc/
+__pycache__
+*.pyc
