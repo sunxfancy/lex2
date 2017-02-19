@@ -88,9 +88,6 @@ void Lex::InitCore() {
     core->Init(mainDFA,pEClass);
 }
 
-
-
-
 DFA* Lex::combineAllDFA(){
     vector<int> states;
     vector<vector<int>> statelist;

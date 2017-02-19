@@ -34,13 +34,16 @@ public:
     /// @brief 初始化整个词法系统，并设置当前输入字符流，可以设置为NULL
     virtual void Init(const char* pData) = 0;
 
+    /// @brief read the config, you need to call it manually before init system, it will find the lex.cfg at the ./ path
+    virtual bool ReadConfig(const char* path) = 0;
+
     /// @brief 不再初始化系统，只是简单的重设置输入字符流
     virtual void setData(const char* pData) = 0;
 
     /// @brief 获取总共有多少个词法规则
     virtual int getRuleSize() = 0;
-
-	LexInterface* Create();
 };
+
+LexInterface* CreateLex();
 
 #endif // LEX_INTERFACE_H

@@ -1,6 +1,6 @@
 #include "LexInterface.h"
 #include "Lex.h"
 
-LexInterface* LexInterface::Create() {
+LexInterface* CreateLex() {
     return new Lex();
 }

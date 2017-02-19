@@ -4,7 +4,7 @@ class PLex(ConanFile):
     name = "plex"
     version = "0.1.0"
     settings = "os", "compiler", "build_type", "arch"
-    requires = "estring/1.1@sunxfancy/stable"
+    requires = "estring/1.2@sunxfancy/stable"
     exports_sources = "*"
     generators = "cmake"
 

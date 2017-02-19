@@ -8,7 +8,7 @@ file(GLOB_RECURSE test_source_files ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 add_executable (all_test ${test_source_files})
 
 target_link_libraries(all_test
-                        ${PROJECT_NAME}
+                        ${PROJECT_NAME} ${CONAN_LIBS}
                         ${GTEST_BOTH_LIBRARIES}
                         pthread)
 
