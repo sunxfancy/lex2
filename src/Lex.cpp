@@ -147,6 +147,56 @@ DFA* Lex::combineAllDFA(){
     return mainDFA;
 }
 
+DFA* Lex::makeParallelDFA() {
+    DFA* dfa = mainDFA;
+    DFA* outdfa = new DFA();
+    vector<int> states;
+    vector<vector<int>> statelist;
+    for (int i = 0; i < dfa->getStateSum(); ++i)
+        states.push_back(i);
+
+    outdfa->Top = 0;
+    int i = 0;
+    while (i<statelist.size())
+    {
+        bool b = true;
+        outdfa->m_base.push_back(0);
+        outdfa->m_default.push_back(0);
+        // 等价类是从1-n的
+        for (int c = 1; c <= pEClass->getSum(); ++c)
+        {
+            vector<int>* newvec = new vector<int>();
+            for (int j = 0; j< getRuleSize(); ++j)
+            {
+                Rule& r = ruleManager->getRule(j);
+                DFA* dfa = r.dfa;
+                int nowstate = statelist[i][j];
+                int nextstate = -1;
+                if (nowstate != -1)
+                    nextstate = dfa->nextState(nowstate,c);
+                newvec->push_back(nextstate);
+            }
+            // 第一次找到转移时对base数组进行计算赋值
+            if (b) {
+                b = false;
+                outdfa->m_base[i] = outdfa->Top - c;
+            }
+
+            int p = testin(*newvec,statelist);
+            if (p == -2) {
+                statelist.push_back(*newvec);
+                p = statelist.size()-1;
+                addStopState(*newvec,p);
+            }
+            outdfa->addEdge(i,p,c);
+        }
+        ++i;
+    }
+}
+
+
+
+
 void Lex::addStopState(vector<int>& newvec,int p)
 {
     for (int i = 0; i < newvec.size(); ++i) {

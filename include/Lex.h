@@ -55,6 +55,7 @@ public:
     /// @brief init the main DFA core
     void InitCore();
 
+
 	// ============================================
 	// getter and setter
 	// ============================================
@@ -65,6 +66,10 @@ private:
 
 	/// @brief when you change the Rule, you should run it manually
 	DFA* combineAllDFA();
+
+	/// @brief make it parallel
+	DFA* makeParallelDFA();
+
 	int testin(vector< int > newvec, vector< vector< int > > statelist);
 	bool testequal(vector< int > , vector< int > );
     void addStopState(vector<int>&,int);
