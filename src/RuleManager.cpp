@@ -4,6 +4,7 @@
 #include <exception>
 #include <queue>
 #include <cstring>
+#include "parser.hpp"
 
 
 RuleManager::RuleManager() {
