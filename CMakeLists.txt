@@ -1,5 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.1)
-project("plex")
+project("lex")
 
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build/conanbuildinfo.cmake)
     include(${CMAKE_CURRENT_SOURCE_DIR}/build/conanbuildinfo.cmake)
